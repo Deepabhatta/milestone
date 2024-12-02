@@ -133,3 +133,76 @@ const PORT = 3000;
 app.listen(PORT, () => {
   console.log(Expense Tracker API running on port ${PORT});
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2. Testing the API Endpoints
+2.1. Add a New Expense (POST /expenses)
+URL: http://localhost:3000/expenses
+Method: POST
+Request Body:
+json
+Copy code
+{
+  "category": "Food",
+  "amount": 50,
+  "date": "2024-12-01"
+}
+Response (on success):
+json
+Copy code
+{
+  "status": "success",
+  "data": {
+    "id": "uuid_generated_for_expense",
+    "category": "Food",
+    "amount": 50,
+    "date": "2024-12-01T00:00:00.000Z"
+  },
+  "error": null
+}
+2.2. Retrieve Expenses (GET /expenses)
+URL: http://localhost:3000/expenses
+Method: GET
+Query Parameters (optional):
+category: Filter by category (e.g., Food, Travel).
+startDate: Start date for filtering (e.g., 2024-12-01).
+endDate: End date for filtering (e.g., 2024-12-31).
+Example: Retrieve all expenses in the month of December 2024:
+
+http
+Copy code
+GET http://localhost:3000/expenses?startDate=2024-12-01&endDate=2024-12-31
+Response (example):
+json
+Copy code
+{
+  "status": "success",
+  "data": [
+    {
+      "id": "uuid_generated_for_expense",
+      "category": "Food",
+      "amount": 50,
+      "date": "2024-12-01T00:00:00.000Z"
+    }
+  ],
+  "error": null
+}
+2.3. Analyze Spending (GET /expenses/analysis)
+URL: http://localhost:3000/expenses/analysis
+
+Method: GET
+
+Response (example):
